@@ -9,22 +9,13 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   Future<void> getLocation() async {
     try {
-      print("Step 1");
-
-      bool serviceEnabled =
-      await Geolocator.isLocationServiceEnabled();
-
-      print("Service Enabled: $serviceEnabled");
+      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
 
       LocationPermission permission =
       await Geolocator.checkPermission();
 
-      print("Permission: $permission");
-
       if (permission == LocationPermission.denied) {
         permission = await Geolocator.requestPermission();
-
-        print("After Request: $permission");
 
         if (permission == LocationPermission.denied) {
           print("Permission denied");
@@ -39,6 +30,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
       Position position =
       await Geolocator.getCurrentPosition();
+
+      print("position: $position");
     } catch (e) {
       print("ERROR: $e");
     }
