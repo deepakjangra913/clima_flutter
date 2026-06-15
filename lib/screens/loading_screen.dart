@@ -9,8 +9,6 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   Future<void> getLocation() async {
     try {
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-
       LocationPermission permission =
       await Geolocator.checkPermission();
 
